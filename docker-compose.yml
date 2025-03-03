@@ -38,6 +38,7 @@ services:
     depends_on:
       - web
       - client
+      - server
 
 networks:
   test:
