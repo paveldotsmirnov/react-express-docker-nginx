@@ -1,47 +1,30 @@
-version: '3.8'
-
 services:
+  client:
+    build:
+      context: ./client
+      args:
+      - PUBLIC_URL=/client
+    networks:
+      - test
+
+  web:
+      build:
+        context: ./web
+        args:
+        - PUBLIC_URL=/
+      networks:
+        - test
+
   nginx:
-    image: nginx:latest
-    container_name: nginx
-    restart: always
+    build:
+      context: ./nginx
     ports:
-      - "80:80"
-    volumes:
-      - ./react-app-1/build:/usr/share/nginx/html/react-app-1
-      - ./react-app-2/build:/usr/share/nginx/html/react-app-2
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - 3000:80
+    networks:
+      - test
     depends_on:
-      - react-app-1
-      - react-app-2
-      - express-server
+      - main
+      - client
 
-  react-app-1:
-    build: ./react-app-1
-    container_name: react-app-1
-    restart: always
-    volumes:
-      - ./react-app-1:/app
-    environment:
-      - NODE_ENV=production
-
-  react-app-2:
-    build: ./react-app-2
-    container_name: react-app-2
-    restart: always
-    volumes:
-      - ./react-app-2:/app
-    environment:
-      - NODE_ENV=production
-
-  express-server:
-    build: ./express-server
-    container_name: express-server
-    restart: always
-    volumes:
-      - ./express-server:/app
-    environment:
-      - NODE_ENV=production
-      - PORT=5000
-    ports:
-      - "5000:5000"
+networks:
+  test:
