@@ -1,12 +1,11 @@
-FROM node:18 AS builder
+FROM node:18
+
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 RUN npm run build
+RUN npm install -g serve  # Install `serve` globally
 
-FROM nginx:latest
-WORKDIR /usr/share/nginx/html/react-app-2
-COPY --from=builder /app/build ./
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+EXPOSE 3001
+CMD ["serve", "-s", "build", "-l", "3001"]
