@@ -23,7 +23,7 @@ services:
     networks:
       - test
     depends_on:
-      - main
+      - web
       - client
 
 networks:
