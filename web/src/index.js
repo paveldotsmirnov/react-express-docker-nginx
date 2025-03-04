@@ -4,9 +4,9 @@ import './index.css';
 import { BrowserRouter, Route, Routes } from "react-router";
 import reportWebVitals from './reportWebVitals';
 import Home from './Home';
-import Dashboard from '../../client/src/Dashboard';
-import RecentActivity from '../../client/src/RecentActivity';
-import Project from '../../client/src/Project';
+import Dashboard from './Dashboard';
+import RecentActivity from './RecentActivity';
+import Project from './Project';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
