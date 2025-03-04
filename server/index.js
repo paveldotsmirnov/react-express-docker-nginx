@@ -10,7 +10,7 @@ app.use(cors({
 }));
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'CORS-enabled API' });
+  res.json({ message: 'CORS-enabled API!' });
 });
 
 app.listen(port, '0.0.0.0', () => {
