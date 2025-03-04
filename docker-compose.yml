@@ -1,5 +1,6 @@
 services:
   client:
+    container_name: client
     build:
       context: ./client
       args:
@@ -8,6 +9,7 @@ services:
       - test
 
   web:
+      container_name: web
       build:
         context: ./web
         args:
@@ -16,8 +18,8 @@ services:
         - test
 
   server:
-    build: ./server
     container_name: server
+    build: ./server
     restart: always
     volumes:
       - ./server:/app
