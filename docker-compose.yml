@@ -28,6 +28,8 @@ services:
       - PORT=5000
     ports:
       - "5000:5000"
+    networks:
+      - test
 
   nginx:
     container_name: nginx
