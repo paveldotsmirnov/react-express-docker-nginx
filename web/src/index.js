@@ -1,13 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import { BrowserRouter, Route, Routes } from "react-router";
 import reportWebVitals from './reportWebVitals';
+import Home from './Home';
+import Dashboard from '../../client/src/Dashboard';
+import RecentActivity from '../../client/src/RecentActivity';
+import Project from '../../client/src/Project';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter basename="/client">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={<RecentActivity />} />
+          <Route path="project/:id" element={<Project />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

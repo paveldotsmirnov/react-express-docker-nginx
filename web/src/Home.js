@@ -4,7 +4,7 @@ import { Link } from "react-router";
 export default function Home() {
   return (
     <div>
-      <h1>Client: Home</h1>
+      <h1>Web: Home</h1>
       <Link to="/dashboard">Dashboard</Link>
     </div>
   );
