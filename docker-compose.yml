@@ -4,18 +4,18 @@ services:
     build:
       context: ./client
       args:
-      - PUBLIC_URL=/client
+        - PUBLIC_URL=/client
     networks:
       - test
 
   web:
-      container_name: web
-      build:
-        context: ./web
-        args:
+    container_name: web
+    build:
+      context: ./web
+      args:
         - PUBLIC_URL=/
-      networks:
-        - test
+    networks:
+      - test
 
   server:
     container_name: server
